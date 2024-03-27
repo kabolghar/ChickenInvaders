@@ -5,9 +5,8 @@
 #include "Enemy.h"
 
 #include <QDebug>
-Bullet::Bullet(): QObject(), QGraphicsRectItem(){
-    // drew the rect
-    setRect(0,0,10,50);
+Bullet::Bullet(): QObject(), QGraphicsPixmapItem(){
+
 
     // connect
     QTimer * timer = new QTimer(this);
@@ -33,7 +32,7 @@ void Bullet::move(){
 
     // move bullet up
     setPos(x(),y()-10);
-    if (pos().y() + rect().height() < 0){
+    if (y() + 50 < 0){
         scene()->removeItem(this);
         delete this;
     }

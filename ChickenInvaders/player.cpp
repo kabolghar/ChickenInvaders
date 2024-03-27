@@ -18,6 +18,7 @@ void Player::keyPressEvent(QKeyEvent *event){
         // create a bullet
         Bullet * bullet = new Bullet();
         bullet->setPos(x(),y());
+        bullet->setPixmap(QPixmap(":/resource/red_laser.png").scaled(10,50));
         scene()->addItem(bullet);
     }
 }
@@ -25,5 +26,6 @@ void Player::keyPressEvent(QKeyEvent *event){
 void Player::spawn(){
     // create an enemy
     Enemy * enemy = new Enemy();
+    enemy->setPixmap(QPixmap(":/resource/chicken.png").scaled(50,50));
     scene()->addItem(enemy);
 }
