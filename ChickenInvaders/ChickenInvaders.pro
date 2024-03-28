@@ -11,15 +11,19 @@ CONFIG += c++17
 SOURCES += \
     bullet.cpp \
     enemy.cpp \
+    game.cpp \
     main.cpp \
     mainwindow.cpp \
-    player.cpp
+    player.cpp \
+    scorehealth.cpp
 
 HEADERS += \
     bullet.h \
     enemy.h \
+    game.h \
     mainwindow.h \
-    player.h
+    player.h \
+    scorehealth.h
 
 FORMS += \
     mainwindow.ui

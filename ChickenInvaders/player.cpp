@@ -30,4 +30,5 @@ void Player::spawn(){
     QPixmap enem = QPixmap(":/resource/Chicken Inv.png").scaled(50,50);
     enemy->setPixmap(enem);
     scene()->addItem(enemy);
+
 }
