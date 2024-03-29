@@ -1,14 +1,17 @@
 #ifndef BULLET_H
 #define BULLET_H
-
+#include <QGraphicsTextItem>
 #include <QGraphicsPixmapItem>
+#include <QTimer>
 #include <QObject>
 
+class Bullet: public QObject, public QGraphicsPixmapItem
+{
 
-class Bullet: public QObject,public QGraphicsPixmapItem{
     Q_OBJECT
 public:
     Bullet();
+
 public slots:
     void move();
 };

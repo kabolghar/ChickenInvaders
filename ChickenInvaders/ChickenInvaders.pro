@@ -12,21 +12,21 @@ SOURCES += \
     bullet.cpp \
     enemy.cpp \
     game.cpp \
+    health.cpp \
     main.cpp \
-    mainwindow.cpp \
     player.cpp \
-    scorehealth.cpp
+    score.cpp
 
 HEADERS += \
     bullet.h \
     enemy.h \
     game.h \
-    mainwindow.h \
+    health.h \
+    main.h \
     player.h \
-    scorehealth.h
+    score.h
 
-FORMS += \
-    mainwindow.ui
+FORMS +=
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -1,51 +1,28 @@
+#include "QtCore/qtimer.h"
 #include "enemy.h"
-#include "bullet.h"
 #include "game.h"
-#include <QTimer>
-#include <QGraphicsScene>
-#include <QList>
-#include <stdlib.h> // rand() -> really large int
+#include <QObject>
+#include <QGraphicsPixmapItem>
 
-extern Game *game;
+extern Game * game;
 
-#include <QDebug>
-Enemy::Enemy(): QObject(), QGraphicsPixmapItem(){
-    //set random position
-    int random_number = rand() % 700;
-    setPos(random_number,0);
+Enemy::Enemy() :QObject(), QGraphicsPixmapItem() {
 
 
-    // connect
-    QTimer * timer = new QTimer(this);
-    connect(timer,SIGNAL(timeout()),this,SLOT(move()));
-
+    QTimer * timer = new QTimer();
+    connect(timer, SIGNAL(timeout()),this,SLOT (move()));
     timer->start(50);
 
 }
 
-void Enemy::move(){
-    // move enemy down
+void Enemy:: move(){
+
     setPos(x(),y()+5);
-    if (y() +75 < 0){
+
+    if(y()>600)
+    {
+        game->health->decrease();
         scene()->removeItem(this);
         delete this;
     }
-
-    QList<QGraphicsItem *> colliding_items = collidingItems();
-    for (int i = 0, n = colliding_items.size(); i < n; ++i){
-        if (typeid(*(colliding_items[i])) == typeid(Bullet)){
-            game->s->increase();
-            // remove them both
-            scene()->removeItem(colliding_items[i]);
-            scene()->removeItem(this);
-            // delete them both
-            delete colliding_items[i];
-            delete this;
-            return;
-        }
-
-    }
-
 }
-
-

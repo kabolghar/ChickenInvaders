@@ -1,35 +1,47 @@
 #include "bullet.h"
-#include <QTimer>
-#include <QGraphicsScene>
-#include <QList>
-#include "Enemy.h"
+#include "enemy.h"
+#include "score.h"
 #include "game.h"
-#include "scorehealth.h"
-#include <QDebug>
+#include <QGraphicsItem>
+#include <QGraphicsScene>
+#include <QGraphicsPixmapItem>
+#include <QTimer>
+#include <QObject>
 
 extern Game * game;
 
-Bullet::Bullet(): QObject(), QGraphicsPixmapItem(){
+Bullet::Bullet(): QObject(), QGraphicsPixmapItem() {
 
 
-    // connect
-    QTimer * timer = new QTimer(this);
-    connect(timer,SIGNAL(timeout()),this,SLOT(move()));
-
+    QTimer * timer = new QTimer();
+    connect(timer, SIGNAL(timeout()),this,SLOT(move()));
     timer->start(50);
-
 }
 
-void Bullet::move(){
-    // if bullet collides with enemy, destroy both
+void Bullet:: move()
+{
+
+    QList<QGraphicsItem *> collison = collidingItems();
+    for (int i = 0; i<collison.size(); i++){
+        if (typeid(*(collison[i])) == typeid (Enemy)){
+
+            game->score->increase();
+
+            scene()->removeItem(collison[i]);
+            scene()->removeItem(this);
+
+            delete collison[i];
+            delete this;
 
 
-    // move bullet up
+
+            return;
+
+        }
+    }
     setPos(x(),y()-10);
-    if (y() + 50 < 0){
+    if (y() + 10 < 0){
         scene()->removeItem(this);
         delete this;
-
     }
 }
-

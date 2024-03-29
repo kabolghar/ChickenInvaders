@@ -17,7 +17,7 @@ CXX           = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefau
 DEFINES       = -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -mmacosx-version-min=11.0 -Wall -Wextra $(DEFINES)
 CXXFLAGS      = -pipe -stdlib=libc++ -g -std=gnu++1z $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -mmacosx-version-min=11.0 -Wall -Wextra $(DEFINES)
-INCPATH       = -I../ChickenInvaders -I. -I../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers -I../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/AGL.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/AGL.framework/Headers -I../../../../Qt/6.7.0/macos/mkspecs/macx-clang -F/Users/kabolghar/Qt/6.7.0/macos/lib
+INCPATH       = -I../ChickenInvaders -I. -I../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers -I../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/AGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/AGL.framework/Headers -I../../../../Qt/6.7.0/macos/mkspecs/macx-clang -F/Users/kabolghar/Qt/6.7.0/macos/lib
 QMAKE         = /Users/kabolghar/Qt/6.7.0/macos/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -37,7 +37,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = ChickenInvaders1.0.0
-DISTDIR = /Users/kabolghar/Desktop/Assignment2/ChickenInvaders/build-ChickenInvaders-Desktop_arm_darwin_generic_mach_o_64bit-Debug/.tmp/ChickenInvaders1.0.0
+DISTDIR = /Users/kabolghar/Desktop/Assignment2ChknInv/ChickenInvaders/build-ChickenInvaders-Desktop_arm_darwin_generic_mach_o_64bit-Debug/.tmp/ChickenInvaders1.0.0
 LINK          = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
 LFLAGS        = -stdlib=libc++ -headerpad_max_install_names $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -mmacosx-version-min=11.0 -Wl,-rpath,@executable_path/../Frameworks -Wl,-rpath,/Users/kabolghar/Qt/6.7.0/macos/lib
 LIBS          = $(SUBLIBS) -F/Users/kabolghar/Qt/6.7.0/macos/lib -framework QtWidgets -framework QtGui -framework AppKit -framework ImageIO -framework Metal -framework QtCore -framework IOKit -framework DiskArbitration -framework AGL -framework OpenGL   
@@ -55,25 +55,23 @@ OBJECTS_DIR   = ./
 SOURCES       = ../ChickenInvaders/bullet.cpp \
 		../ChickenInvaders/enemy.cpp \
 		../ChickenInvaders/game.cpp \
+		../ChickenInvaders/health.cpp \
 		../ChickenInvaders/main.cpp \
-		../ChickenInvaders/mainwindow.cpp \
 		../ChickenInvaders/player.cpp \
-		../ChickenInvaders/scorehealth.cpp qrc_Resources.cpp \
+		../ChickenInvaders/score.cpp qrc_Resources.cpp \
 		moc_bullet.cpp \
 		moc_enemy.cpp \
-		moc_mainwindow.cpp \
 		moc_player.cpp
 OBJECTS       = bullet.o \
 		enemy.o \
 		game.o \
+		health.o \
 		main.o \
-		mainwindow.o \
 		player.o \
-		scorehealth.o \
+		score.o \
 		qrc_Resources.o \
 		moc_bullet.o \
 		moc_enemy.o \
-		moc_mainwindow.o \
 		moc_player.o
 DIST          = ../../../../Qt/6.7.0/macos/mkspecs/features/spec_pre.prf \
 		../../../../Qt/6.7.0/macos/mkspecs/features/device_config.prf \
@@ -271,15 +269,16 @@ DIST          = ../../../../Qt/6.7.0/macos/mkspecs/features/spec_pre.prf \
 		../ChickenInvaders/ChickenInvaders.pro ../ChickenInvaders/bullet.h \
 		../ChickenInvaders/enemy.h \
 		../ChickenInvaders/game.h \
-		../ChickenInvaders/mainwindow.h \
+		../ChickenInvaders/health.h \
+		../ChickenInvaders/main.h \
 		../ChickenInvaders/player.h \
-		../ChickenInvaders/scorehealth.h ../ChickenInvaders/bullet.cpp \
+		../ChickenInvaders/score.h ../ChickenInvaders/bullet.cpp \
 		../ChickenInvaders/enemy.cpp \
 		../ChickenInvaders/game.cpp \
+		../ChickenInvaders/health.cpp \
 		../ChickenInvaders/main.cpp \
-		../ChickenInvaders/mainwindow.cpp \
 		../ChickenInvaders/player.cpp \
-		../ChickenInvaders/scorehealth.cpp
+		../ChickenInvaders/score.cpp
 QMAKE_TARGET  = ChickenInvaders
 DESTDIR       = 
 TARGET        = ChickenInvaders.app/Contents/MacOS/ChickenInvaders
@@ -288,19 +287,19 @@ TARGET        = ChickenInvaders.app/Contents/MacOS/ChickenInvaders
 EXPORT_QMAKE_MAC_SDK = macosx
 EXPORT_QMAKE_MAC_SDK_VERSION = 14.4
 EXPORT_QMAKE_XCODE_DEVELOPER_PATH = /Applications/Xcode.app/Contents/Developer
-EXPORT__QMAKE_STASH_ = /Users/kabolghar/Desktop/Assignment2/ChickenInvaders/build-ChickenInvaders-Desktop_arm_darwin_generic_mach_o_64bit-Debug/.qmake.stash
+EXPORT__QMAKE_STASH_ = /Users/kabolghar/Desktop/Assignment2ChknInv/ChickenInvaders/build-ChickenInvaders-Desktop_arm_darwin_generic_mach_o_64bit-Debug/.qmake.stash
 EXPORT_VALID_ARCHS = x86_64 arm64
 EXPORT_DEFAULT_ARCHS = arm64
 EXPORT_ARCHS = $(filter $(EXPORT_VALID_ARCHS), $(if $(ARCHS), $(ARCHS), $(if $(EXPORT_DEFAULT_ARCHS), $(EXPORT_DEFAULT_ARCHS), $(EXPORT_VALID_ARCHS))))
 EXPORT_ARCH_ARGS = $(foreach arch, $(if $(EXPORT_ARCHS), $(EXPORT_ARCHS), $(EXPORT_VALID_ARCHS)), -arch $(arch))
-EXPORT__PRO_FILE_ = /Users/kabolghar/Desktop/Assignment2/ChickenInvaders/ChickenInvaders/ChickenInvaders.pro
+EXPORT__PRO_FILE_ = /Users/kabolghar/Desktop/Assignment2ChknInv/ChickenInvaders/ChickenInvaders/ChickenInvaders.pro
 
 
 include /Users/kabolghar/Qt/6.7.0/macos/mkspecs/features/mac/sdk.mk
 first: all
 ####### Build rules
 
-ChickenInvaders.app/Contents/MacOS/ChickenInvaders: ui_mainwindow.h $(OBJECTS)  
+ChickenInvaders.app/Contents/MacOS/ChickenInvaders:  $(OBJECTS)  
 	@test -d ChickenInvaders.app/Contents/MacOS/ || mkdir -p ChickenInvaders.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET)  $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -726,9 +725,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../Resources/Resources.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../ChickenInvaders/bullet.h ../ChickenInvaders/enemy.h ../ChickenInvaders/game.h ../ChickenInvaders/mainwindow.h ../ChickenInvaders/player.h ../ChickenInvaders/scorehealth.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../ChickenInvaders/bullet.cpp ../ChickenInvaders/enemy.cpp ../ChickenInvaders/game.cpp ../ChickenInvaders/main.cpp ../ChickenInvaders/mainwindow.cpp ../ChickenInvaders/player.cpp ../ChickenInvaders/scorehealth.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../ChickenInvaders/mainwindow.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../ChickenInvaders/bullet.h ../ChickenInvaders/enemy.h ../ChickenInvaders/game.h ../ChickenInvaders/health.h ../ChickenInvaders/main.h ../ChickenInvaders/player.h ../ChickenInvaders/score.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../ChickenInvaders/bullet.cpp ../ChickenInvaders/enemy.cpp ../ChickenInvaders/game.cpp ../ChickenInvaders/health.cpp ../ChickenInvaders/main.cpp ../ChickenInvaders/player.cpp ../ChickenInvaders/score.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -761,59 +759,57 @@ compiler_rcc_clean:
 qrc_Resources.cpp: ../Resources/Resources.qrc \
 		../../../../Qt/6.7.0/macos/libexec/rcc \
 		../Resources/red_laser.png \
-		../Resources/Chicken\ Inv.png \
 		../Resources/ship.png \
+		../Resources/backgroun.png \
 		../Resources/chicken.png
 	/Users/kabolghar/Qt/6.7.0/macos/libexec/rcc -name Resources --no-zstd ../Resources/Resources.qrc -o qrc_Resources.cpp
 
-compiler_moc_header_make_all: moc_bullet.cpp moc_enemy.cpp moc_mainwindow.cpp moc_player.cpp
+compiler_moc_header_make_all: moc_bullet.cpp moc_enemy.cpp moc_player.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_bullet.cpp moc_enemy.cpp moc_mainwindow.cpp moc_player.cpp
+	-$(DEL_FILE) moc_bullet.cpp moc_enemy.cpp moc_player.cpp
 moc_bullet.cpp: ../ChickenInvaders/bullet.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
-		../../../../Qt/6.7.0/macos/libexec/moc
-	/Users/kabolghar/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/kabolghar/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/kabolghar/Desktop/Assignment2/ChickenInvaders/ChickenInvaders -I/Users/kabolghar/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/kabolghar/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/kabolghar/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/kabolghar/Qt/6.7.0/macos/lib ../ChickenInvaders/bullet.h -o moc_bullet.cpp
-
-moc_enemy.cpp: ../ChickenInvaders/enemy.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
-		../../../../Qt/6.7.0/macos/libexec/moc
-	/Users/kabolghar/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/kabolghar/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/kabolghar/Desktop/Assignment2/ChickenInvaders/ChickenInvaders -I/Users/kabolghar/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/kabolghar/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/kabolghar/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/kabolghar/Qt/6.7.0/macos/lib ../ChickenInvaders/enemy.h -o moc_enemy.cpp
-
-moc_mainwindow.cpp: ../ChickenInvaders/mainwindow.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
-		../../../../Qt/6.7.0/macos/libexec/moc
-	/Users/kabolghar/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/kabolghar/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/kabolghar/Desktop/Assignment2/ChickenInvaders/ChickenInvaders -I/Users/kabolghar/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/kabolghar/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/kabolghar/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/kabolghar/Qt/6.7.0/macos/lib ../ChickenInvaders/mainwindow.h -o moc_mainwindow.cpp
-
-moc_player.cpp: ../ChickenInvaders/player.h \
-		../ChickenInvaders/scorehealth.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsTextItem \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTimer \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
 		../../../../Qt/6.7.0/macos/libexec/moc
-	/Users/kabolghar/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/kabolghar/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/kabolghar/Desktop/Assignment2/ChickenInvaders/ChickenInvaders -I/Users/kabolghar/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/kabolghar/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/kabolghar/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/kabolghar/Qt/6.7.0/macos/lib ../ChickenInvaders/player.h -o moc_player.cpp
+	/Users/kabolghar/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/kabolghar/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/kabolghar/Desktop/Assignment2ChknInv/ChickenInvaders/ChickenInvaders -I/Users/kabolghar/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/kabolghar/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/kabolghar/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/kabolghar/Qt/6.7.0/macos/lib ../ChickenInvaders/bullet.h -o moc_bullet.cpp
+
+moc_enemy.cpp: ../ChickenInvaders/enemy.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsItem \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Qt/6.7.0/macos/libexec/moc
+	/Users/kabolghar/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/kabolghar/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/kabolghar/Desktop/Assignment2ChknInv/ChickenInvaders/ChickenInvaders -I/Users/kabolghar/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/kabolghar/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/kabolghar/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/kabolghar/Qt/6.7.0/macos/lib ../ChickenInvaders/enemy.h -o moc_enemy.cpp
+
+moc_player.cpp: ../ChickenInvaders/player.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsItem \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsTextItem \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTimer \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDebug \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdebug.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Qt/6.7.0/macos/libexec/moc
+	/Users/kabolghar/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/kabolghar/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/kabolghar/Desktop/Assignment2ChknInv/ChickenInvaders/ChickenInvaders -I/Users/kabolghar/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/kabolghar/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/kabolghar/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/kabolghar/Qt/6.7.0/macos/lib ../ChickenInvaders/player.h -o moc_player.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h
+compiler_uic_make_all:
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h
-ui_mainwindow.h: ../ChickenInvaders/mainwindow.ui \
-		../../../../Qt/6.7.0/macos/libexec/uic
-	/Users/kabolghar/Qt/6.7.0/macos/libexec/uic ../ChickenInvaders/mainwindow.ui -o ui_mainwindow.h
-
 compiler_rez_source_make_all:
 compiler_rez_source_clean:
 compiler_yacc_decl_make_all:
@@ -822,106 +818,181 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_header_clean 
 
 ####### Compile
 
 bullet.o: ../ChickenInvaders/bullet.cpp ../ChickenInvaders/bullet.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTimer \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QList \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlist.h \
-		../ChickenInvaders/Enemy.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDebug \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdebug.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o bullet.o ../ChickenInvaders/bullet.cpp
-
-enemy.o: ../ChickenInvaders/enemy.cpp ../ChickenInvaders/enemy.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTimer \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QList \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlist.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDebug \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdebug.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o enemy.o ../ChickenInvaders/enemy.cpp
-
-game.o: ../ChickenInvaders/game.cpp ../ChickenInvaders/game.h \
-		../ChickenInvaders/player.h \
-		../ChickenInvaders/scorehealth.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsTextItem \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTimer \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
+		../ChickenInvaders/enemy.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsItem \
+		../ChickenInvaders/score.h \
+		../ChickenInvaders/game.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../ChickenInvaders/player.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDebug \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdebug.h \
+		../ChickenInvaders/health.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o bullet.o ../ChickenInvaders/bullet.cpp
+
+enemy.o: ../ChickenInvaders/enemy.cpp ../ChickenInvaders/enemy.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsItem \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		../ChickenInvaders/game.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../ChickenInvaders/score.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsTextItem \
+		../ChickenInvaders/player.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTimer \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QList \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlist.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsItem
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDebug \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdebug.h \
+		../ChickenInvaders/health.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o enemy.o ../ChickenInvaders/enemy.cpp
+
+game.o: ../ChickenInvaders/game.cpp ../ChickenInvaders/game.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../ChickenInvaders/score.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsTextItem \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
+		../ChickenInvaders/player.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsItem \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTimer \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDebug \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdebug.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		../ChickenInvaders/health.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QKeyEvent \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qevent.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QBrush \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qbrush.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QImage \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qimage.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o game.o ../ChickenInvaders/game.cpp
+
+health.o: ../ChickenInvaders/health.cpp ../ChickenInvaders/health.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsTextItem \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
+		../ChickenInvaders/game.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../ChickenInvaders/score.h \
+		../ChickenInvaders/player.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsItem \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTimer \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDebug \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdebug.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QFont \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qfont.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QApplication \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qapplication.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QProcess \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qprocess.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o health.o ../ChickenInvaders/health.cpp
 
 main.o: ../ChickenInvaders/main.cpp ../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QApplication \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qapplication.h \
 		../ChickenInvaders/game.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTimer \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QList \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qlist.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsItem \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../ChickenInvaders/main.cpp
-
-mainwindow.o: ../ChickenInvaders/mainwindow.cpp ../ChickenInvaders/mainwindow.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
-		ui_mainwindow.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../ChickenInvaders/mainwindow.cpp
-
-player.o: ../ChickenInvaders/player.cpp ../ChickenInvaders/player.h \
-		../ChickenInvaders/scorehealth.h \
+		../ChickenInvaders/score.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsTextItem \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
+		../ChickenInvaders/player.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsItem \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTimer \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDebug \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdebug.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		../ChickenInvaders/health.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../ChickenInvaders/main.cpp
+
+player.o: ../ChickenInvaders/player.cpp ../ChickenInvaders/bullet.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsTextItem \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTimer \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		../ChickenInvaders/enemy.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsItem \
+		../ChickenInvaders/player.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDebug \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdebug.h \
+		../ChickenInvaders/game.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
+		../ChickenInvaders/score.h \
+		../ChickenInvaders/health.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QRect \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qrect.h \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QKeyEvent \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qevent.h \
-		../ChickenInvaders/bullet.h \
-		../ChickenInvaders/enemy.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDebug \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdebug.h
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qevent.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o player.o ../ChickenInvaders/player.cpp
 
-scorehealth.o: ../ChickenInvaders/scorehealth.cpp ../ChickenInvaders/scorehealth.h \
+score.o: ../ChickenInvaders/score.cpp ../ChickenInvaders/score.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsTextItem \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o scorehealth.o ../ChickenInvaders/scorehealth.cpp
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QFont \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qfont.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o score.o ../ChickenInvaders/score.cpp
 
 qrc_Resources.o: qrc_Resources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_Resources.o qrc_Resources.cpp
@@ -931,9 +1002,6 @@ moc_bullet.o: moc_bullet.cpp
 
 moc_enemy.o: moc_enemy.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_enemy.o moc_enemy.cpp
-
-moc_mainwindow.o: moc_mainwindow.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
 
 moc_player.o: moc_player.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_player.o moc_player.cpp
