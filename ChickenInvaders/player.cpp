@@ -12,6 +12,9 @@
 #include <QDebug>
 #include <QKeyEvent>
 #include <stdlib.h>
+// #include <QMediaPlayer>
+// #include <QAudioOutput>
+
 
 extern Game * game;
 
@@ -56,9 +59,18 @@ void Player::keyPressEvent(QKeyEvent *event)
         bul = bul.scaled(10,50, Qt::KeepAspectRatio);
 
         Bullet* bullet = new Bullet;
+
         bullet->setPixmap(bul);
         bullet->setPos(x()+30,y());
         scene()->addItem(bullet);
+/* Correct code yet missing Qt files
+        QMediaPlayer *sound1= new QMediaPlayer();
+        QAudioOutput *volume1= new QAudioOutput();
+        sound1->setSource(OUrl ("qrc:/resource/Laser.mp3"));
+        sound1->setAudioOutput (volume1);
+        voulume1->setVolume1(10000);
+        sound1->play();
+*/
     }
 
 

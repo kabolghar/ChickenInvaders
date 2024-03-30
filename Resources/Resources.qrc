@@ -4,5 +4,7 @@
         <file>red_laser.png</file>
         <file>ship.png</file>
         <file>backgroun.png</file>
+        <file>Dead Chicken.mp3</file>
+        <file>Laser.mp3</file>
     </qresource>
 </RCC>

@@ -22,6 +22,15 @@ void Health::decrease()
 {
     health--;
     setPlainText("Health: " + QString::number(health));
+    if (health==0){
+        QMessageBox *Q = new QMessageBox;
+        Q->setText("Game Over");
+        QPushButton *end = Q->addButton(tr("End Game"),QMessageBox::ActionRole);
+            Q->exec();
+        if (Q->clickedButton()==end){
+                game->close();
+            }
+    }
 }
 
 int Health::getHealth()

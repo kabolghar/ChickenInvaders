@@ -19,6 +19,8 @@ Game::Game(QWidget *parent) {
     scene->setSceneRect(0, 0, 800, 600);
     setBackgroundBrush(QBrush(QImage(":/resource/backgroun.png").scaled(800,600)));
     setFixedSize(800, 600);
+    setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setScene(scene);
 
     QPixmap pl(":/resource/ship.png");

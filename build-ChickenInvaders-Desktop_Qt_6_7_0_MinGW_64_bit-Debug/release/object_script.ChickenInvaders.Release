@@ -1,10 +1,11 @@
 release/bullet.o
 release/enemy.o
+release/game.o
+release/health.o
 release/main.o
-release/mainwindow.o
 release/player.o
+release/score.o
 release/qrc_Resources.o
 release/moc_bullet.o
 release/moc_enemy.o
-release/moc_mainwindow.o
 release/moc_player.o

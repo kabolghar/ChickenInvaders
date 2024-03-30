@@ -8,6 +8,10 @@
 #include <QTimer>
 #include <QObject>
 
+// #include <QMediaPlayer>
+// #include <QAudioOutput>
+
+
 extern Game * game;
 
 Bullet::Bullet(): QObject(), QGraphicsPixmapItem() {
@@ -24,9 +28,16 @@ void Bullet:: move()
     QList<QGraphicsItem *> collison = collidingItems();
     for (int i = 0; i<collison.size(); i++){
         if (typeid(*(collison[i])) == typeid (Enemy)){
+            /* Correct code yet missing Qt files
+            QMediaPlayer *sound= new QMediaPlayer();
+            QAudioOutput *volume= new QAudioOutput();
+            sound->setSource(OUrl ("qrc:/resource/Dead Chicken.mp3"));
+            sound->setAudioOutput (volume);
+            voulume->setVolume(10000);
+            sound->play();
 
+    */
             game->score->increase();
-
             scene()->removeItem(collison[i]);
             scene()->removeItem(this);
 
